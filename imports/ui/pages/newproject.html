@@ -1,0 +1,45 @@
+<template name="newproject">
+    <div class="container mt-5">
+        <h1>New Project</h1>
+        <form class="new-proj mt-3">
+            <div id="newProjectError" style="display:none" class="alert alert-danger" role="alert">Unknown error</div>
+            <div class="form-group">
+                <label for="inpName" class="h5">Display name</label>
+                <input name="name" type="text" class="form-control" id="inpName" aria-describedby="nameHelp">
+                <small id="nameHelp" class="form-text text-muted">The name does not have to be unique, but you may have
+                    a hard time opening the right one ...</small>
+            </div>
+            <div class="form-group">
+                <label for="inpVideos" class="h5">Videos</label>
+                <input name="videos" id="inpVideos" type="file" class="form-control-file custom-file" multiple>
+                <small class="form-text text-muted mt-n2">Select multiple videos by holding 'Ctrl' / 'Strg' key.</small>
+            </div>
+            <div class="form-group">
+                <label for="inpDominos" class="h5">Dominos CSV</label>
+                <input name="dominos" id="inpDominos" type="file" class="form-control-file custom-file" accept=".csv">
+                <small class="form-text text-muted mt-n2">You can also import and export things in the 'Project Configuration' view later.</small>
+            </div>
+            <div class="form-group">
+                <label for="inpDomino" class="h5">Domino Configuration</label>
+                <div class="d-flex flex-row ">
+                    <canvas width="200" height="200" class="project-domino" id="inpDomino"
+                        aria-describedby="configHelp"></canvas>
+                    <div class="ml-3 d-flex flex-column justify-content-between">
+                        {{ #each i in people }}
+                        <div class="input-group mb-3 d-flex">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span>Room of person {{ plusOne i }}</span>
+                                </div>
+                            </div>
+                            <input type="number" value=0 class="room-input" data-room="{{i}}">
+                        </div>
+                        {{ /each }}
+                    </div>
+                </div>
+                <small id="configHelp" class="form-text text-muted mt-n2">Click on the black dots to disable them. The room layout can be controlled via the up-down controls on the right.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</template>

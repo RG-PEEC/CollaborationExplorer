@@ -1,0 +1,34 @@
+<template name="logframe">
+    <div class="fullpage d-flex flex-column">
+        {{ #if areLogsLoaded }}
+        <div id="scrollArea" class="table-responsive">
+            <table class="table table-striped table-fixed-head" id="logTable">
+                <thead class="thead-light">
+                    <tr id="logTableHeader">
+                        {{ #each logLineHeader }}
+                        <th scope="col">{{this}}</th>
+                        {{ /each }}
+                    </tr>
+                </thead>
+                <tbody id="logTableBody" class="color-transition">
+
+                    {{ #each logLines }}
+                    <tr data-timestamp="{{this.timestamp}}">
+                        {{ #each item in this.line }}
+                        <td>{{ item }}</td>
+                        {{ /each }}
+                    </tr>
+                    {{ /each }}
+
+                </tbody>
+            </table>
+        </div>
+        {{ else }}
+        <div class="container">
+            <h1 class="display-3">Logfile View</h1>
+            <hr>
+            <span class="ml-1">No logfile loaded. Please load a logfile in the 'Project Configuration' view.</span>
+        </div>
+        {{ /if }}
+    </div>
+</template>

@@ -1,0 +1,15 @@
+<template name="project">
+    <div class="fullpage">
+        <div id="views" class="gutter-container overflow-hidden">
+            <div id="view-1" data-view=1 class="collaboration-view">
+                {{ > Template.dynamic template=(getTemplate 0) }}
+            </div>
+            <div id="view-2" data-view=2 class="collaboration-view">
+                {{ > Template.dynamic template=(getTemplate 1) }}
+            </div>
+            <div id="view-3" data-view=3 class="collaboration-view">
+                {{ > Template.dynamic template=(getTemplate 2) }}
+            </div>
+        </div>
+    </div>
+</template>

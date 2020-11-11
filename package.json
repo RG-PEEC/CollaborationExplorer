@@ -1,0 +1,31 @@
+{
+  "name": "collaboration",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@dashboardcode/bsmultiselect": "^0.6.25",
+    "@simonwep/pickr": "^1.7.2",
+    "clusterize.js": "^0.18.1",
+    "d3": "^5.16.0",
+    "file-saver": "^2.0.2",
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.20",
+    "meteor-node-stubs": "^1.0.1",
+    "papaparse": "^5.2.0",
+    "popper.js": "^1.16.1",
+    "split.js": "^1.6.2",
+    "timeago.js": "^4.0.2"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.js",
+      "server": "server/main.js"
+    }
+  }
+}

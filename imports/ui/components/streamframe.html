@@ -1,0 +1,47 @@
+<template name="streamframe">
+    <div id="streamcontainer" class="fullframe streamframe">
+        <div id="vidcontext" class="dropdown-menu" style="z-index: 999;">
+            <form class="px-4 py-3">
+                <h5 id="ctx-title">Error: Bad video</h5>
+                <div class="form-group">
+                    <label for="ctx-offset">Start Offset (sec)</label>
+                    <input type="number" class="form-control" id="ctx-offset" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="ctx-sound">Volume</label><br>
+                    <input type="range" id="ctx-sound" min="0" max="1" step="0.01" value="1">
+                </div>
+                <div class="form-group">
+                    <button type="button" id="ctx-mute" class="btn btn-secondary">Mute/Unmute</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="vidcontainer" class="d-flex align-content-start flex-wrap flex-grow-1 video-container">
+            {{#each vid in videos}}
+            <div class="embed-responsive embed-responsive-16by9 video">
+                <video src="{{vid.url}}" data-index="{{@index}}">
+                </video>
+
+                <div class="vidoverlay alert alert-danger" style="display:none">
+                    <span>Can't find {{vid.name}}</span>
+                    <button type="button" class="ml-1 btn btn-success resolve" data-index="{{@index}}">Resolve</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div id="vidcontrols" class="video-controls">
+            <div class="btn-group">
+                <button id="minus5sec" type="button" class="btn btn-secondary">-5s</button>
+                <button id="minus1sec" type="button" class="btn btn-secondary">-1s</button>
+                <button id="playPause" type="button" class="btn btn-success">Play</button>
+                <button id="plus1sec" type="button" class="btn btn-secondary">+1s</button>
+                <button id="plus5sec" type="button" class="btn btn-secondary">+5s</button>
+            </div>
+            <div class="timebar-text">
+                <span id="timetext"></span>
+            </div>
+            <input id="timebar" type="range" min="0" max="1000000" value="0" class="slider">
+        </div>
+    </div>
+</template>

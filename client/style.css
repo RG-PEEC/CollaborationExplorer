@@ -1,0 +1,481 @@
+html, body {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.color-transition > tr {
+  transition: background .75s linear;
+}
+
+.logfile-column-list {
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.table-fixed-head thead th {
+  position: sticky;
+  top: 0;
+}
+
+.time-header {
+  cursor: pointer;
+}
+
+.tag-text-input {
+  resize:none;
+  flex-grow: 1;
+}
+
+.participants-entry {
+  font-weight: 600;
+}
+
+.time-entry {
+  white-space: nowrap;
+}
+
+.no-participants {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  max-width: 9em;
+}
+
+.participants-container {
+  overflow-y: auto;
+  height: 100%;
+  overflow: auto;
+  background: white;
+  padding-left: 4px;
+  padding-bottom: 2px;
+  flex-shrink: 1;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  min-width: 7em;
+  position: relative;
+}
+
+.participants-controls {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: -2px;
+}
+
+.participants-container .participants-controls {
+  opacity: 0;
+  transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+}
+
+.participants-container:hover .participants-controls {
+  opacity: .35;
+  transition: opacity 0s;
+  -moz-transition: opacity 0s;
+  -webkit-transition: opacity 0s;
+  -o-transition: opacity 0s;
+}
+
+.participants-controls:hover {
+  opacity: 1 !important;
+  transition: opacity .1s;
+  -moz-transition: opacity .1s;
+  -webkit-transition: opacity .1s;
+  -o-transition: opacity .1s;
+}
+
+.participants-controls > .btn {
+  border-radius: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: .2em;
+  padding-right: .2em;
+  display: block;
+  border: 0px !important;
+  width: 100%;
+}
+
+.participant-label {
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;    
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.participants-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.settings-container {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.tag-insert-controls {
+  min-width: 8.5em;
+  max-width: 30%;
+  justify-content: space-between;
+}
+
+.limited-list {
+  overflow-y: auto;
+  max-height: 20em;
+}
+
+.timebar-text {
+  color: whitesmoke;
+}
+
+.insert-panel {
+  position: sticky;
+  background-color: #efefef;
+  border-bottom: 1px solid #666666;
+  
+  box-shadow: 0px 2px 10px grey;
+  box-sizing: border-box;
+
+  height: 11.25em;
+  overflow: auto;
+}
+
+.domino-list {
+  overflow: auto;
+  flex-grow: 1;
+  height: calc(100% - 11.25em);
+}
+
+.slider {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 100%;
+  height: 0.5em; 
+  background: #fff;
+  outline: none;
+  opacity: 0.7; 
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  cursor: pointer;
+}
+
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0em; 
+  height: 0em;
+  background: #28a745;
+  cursor: pointer;
+  border-radius: 50%; 
+}
+
+.slider::-moz-range-thumb {
+  width: 0em;
+  height: 0em;
+  background: #28a745;
+  cursor: pointer;
+  border-radius: 50%; 
+  border: 0px;
+}
+
+.middle-element {
+  border-radius: 0 !important;
+}
+
+.fullpage {
+  height: calc(100vh - 56px) !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow:auto;
+}
+
+.max-half {
+  border: 1px solid black;
+  min-width: 400px;
+  width:100%;
+  max-width: 80vh;
+}
+
+.video {
+  background: transparent;
+  direction: ltr;
+}
+
+.video-container {
+  direction: rtl;
+  width: calc(100% + 1px);
+  height: 100%;
+  overflow: hidden;
+  margin-left: -1px;
+  position: relative;
+}
+
+.streamframe:hover .video-controls {
+  opacity:1;
+  transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  -webkit-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+}
+
+.streamframe .video-controls{
+  opacity:0.0;
+  transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+}
+
+.video-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding-top: 0.4em;
+  padding-bottom: 0.25em;
+  border: 1px solid rgba(94, 94, 94, 0.8);
+  text-align: center;
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
+.top {
+  top:0;
+}
+
+.bottom {
+  bottom:0;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.fullframe {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.streamframe {
+  background: black;
+}
+
+.domino-delete {
+  width: 100%;
+}
+
+.full {
+  width: 100%;
+  border: 1px solid red;
+  height: calc(100vh - 56px) !important;
+  max-width: 100%;
+  max-height: calc(100vh - 56px) !important;
+}
+
+main {
+  width: 100%;
+  height: calc(100vh - 56px) !important;
+  max-width: 100%;
+  max-height: calc(100vh - 56px) !important;
+}
+
+.vidoverlay {
+  position: absolute !important;
+  top: 20%;
+  height: 60%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;   
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.gutter {
+  background-color: #666666;
+  cursor: col-resize;
+  width: .4em !important;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter-container {
+  display:flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.gutter.gutter-vertical {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+}
+
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+}
+
+.domino-canvas {
+  display:inline-block;
+  border-bottom: 2px solid black;
+}
+
+.project-domino {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  display:inline-block;
+  background-color: whitesmoke;
+  width: 200px;
+  height: 200px;
+}
+
+.build-hash {
+  display:block;
+  margin-top: .5em;
+  font-weight: lighter;
+  color: gray;
+}
+
+.domino-time-span {
+  display: block;
+  font-size: smaller;
+  margin-top: -8px;
+  margin-bottom: -2px;
+}
+
+.insert-domino {
+  width: 10em;
+  height: 10em;
+  border: 2px solid black;
+}
+
+.domino {
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+
+  margin: 3px;
+  display:inline-flex;
+}
+
+.domino-selected {
+  position: relative;
+  left: -3px;
+  top: -3px;
+  right: +3px;;
+  bottom: +3px;
+  border: 2px solid red;
+  display:inline-flex;
+  background: darkslategray;
+  box-shadow: 7px 7px 10px darkslategray;
+  box-sizing: border-box;
+}
+
+.vertical-alignment-helper {
+  display:table;
+  height: 100%;
+  width: 100%;
+  pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+}
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events:none;
+}
+.modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width:inherit;
+  max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+  height:inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+  pointer-events: all;
+}
+
+.loader {
+    border: 16px solid #f4f4f4ea;
+    border-top: 16px solid #000000;
+    border-radius: 50%;
+    width: 10%;
+    height: 10%;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .last-edited {
+    font-size: .75em;
+    font-weight: lighter;
+  }
+
+  .project-name {
+    font-size: 1.4em;
+    font-weight: 400;
+  }
+
+  .domino-alert {
+    width: 100%;
+    max-width: 20em;
+    height: calc(100% - 8px);
+    margin: 4px;
+    flex-shrink: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .domino-alert > span {
+    text-align: center;
+  }
+
+  .tag-alert {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px !important;
+  }
+
+  .tag-alert > span {
+    text-align: center;
+    display: inline-block;
+    white-space: pre-wrap;
+  }

@@ -1,0 +1,135 @@
+<template name="settingsframe">
+    <div class="container-fluid settings-container">
+        <h1 class="display-4">Project Configuration</h1>
+        <hr />
+
+        <h1 class="display-5 mb-3">Import / Export</h1>
+        <div>
+            <button type="button" class="btn btn-success mt-1" id="btnImportDominos">Import Dominos (CSV)</button>
+            <button type="button" class="btn btn-success mt-1" id="btnLoadLogs">Import Logfile (CSV)</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary mt-1" id="btnExportDominos">Export Dominos (CSV)</button>
+            <button type="button" class="btn btn-primary mt-1" id="btnExportTagsCsv">Export Tags (CSV)</button>
+            <button type="button" class="btn btn-primary mt-1" id="btnExportTagsJson">Export Tags (JSON)</button>
+            <button type="button" class="btn btn-primary mt-1" id="btnExportProject">Export Project (JSON)</button>
+        </div>
+
+        <!-- 
+            The modal may bug out if meteor reloads during development.
+            If this is ever a concern, see this:
+            https://stackoverflow.com/questions/15176413/bootstrap-modal-doesnt-appear-in-meteor 
+        -->
+        <div class="modal" tabindex="-1" role="dialog" id="logfileModal">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="logfileModalTitle"></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Select columns to import:</h5>
+                            <div class="d-flex flex-column logfile-column-list">
+                                {{ #each importLogfileColumns }}
+                                <label for="import{{@index}}" class="participant-label">
+                                    <input type="checkbox" id="import{{@index}}" class="column-checkbox"
+                                        data-import="{{this}}">
+                                    {{ this }}</label>
+                                {{ /each }}
+                            </div>
+                            <h5 class="mt-2">Select timestamp column:</h5>
+                            <select id="timestampColumn" class="custom-select">
+                                {{ #each importLogfileColumns }}
+                                <option value="{{ this }}">{{ this }}</option>
+                                {{ /each }}
+                            </select>
+                            <h5 class="mt-2">Timestamp start offset:</h5>
+                            <input id="timestampOffset" type="number" class="form-control mt-1">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-success" id="btnImportLogfile">Import</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="display-5 mb-3 mt-3">Tag Types</h1>
+        <div class="limited-list">
+            <ul class="list-group">
+                {{ #each tags }}
+                <li class="list-group-item" style="background: linear-gradient(to right, white 20%, {{color}})">
+                    {{ #if moreThanOneTagTypeExists }}
+                    <button type="button" class="btn btn-danger delete-tag" data-name="{{name}}">X</button>
+                    {{ /if }}
+                    {{ name }}
+                </li>
+                {{ /each }}
+            </ul>
+        </div>
+        <div class="mt-3 d-flex">
+            <input type="text" placeholder="Type Name" class="form-control mr-2" id="tagTypeName" maxlength="32">
+            <div class="tag-color-picker"></div>
+            <button type="button" class="btn btn-success ml-2" id="insertTagType">Insert</button>
+        </div>
+
+        <h1 class="display-5 mb-3 mt-3">Participants</h1>
+        <div class="limited-list">
+            <ul class="list-group">
+                {{ #each participants }}
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-danger delete-participant" data-name="{{ this }}">X</button>
+                    {{ this }}
+                </li>
+                {{ /each }}
+            </ul>
+        </div>
+        <div class="mt-3 d-flex">
+            <input type="text" placeholder="Participants Name" class="form-control" id="participantName" maxlength="32">
+            <button type="button" class="btn btn-success ml-2" id="insertParticipant">Insert</button>
+        </div>
+
+        <h1 class="display-5 mb-3 mt-3">Domino Couplings</h1>
+        <div class="limited-list">
+            <ul class="list-group">
+                {{ #each couplingTypes }}
+                <li class="list-group-item" style="background: linear-gradient(to right, white 20%, {{color}})">
+                    {{ #if moreThanOneCouplingExists }}
+                    <button type="button" class="btn btn-danger delete-coupling" data-name="{{name}}">X</button>
+                    {{ /if }}
+                    {{ name }}
+                </li>
+                {{ /each }}
+            </ul>
+        </div>
+        <div class="mt-3 d-flex mb-3">
+            <input type="text" placeholder="Coupling Name" class="form-control mr-2" id="couplingName" maxlength="32">
+            <div class="tag-color-picker-couplings"></div>
+
+            <div id="couplingMultiple" class="btn-group btn-group-toggle ml-2" data-toggle="buttons">
+                <label class="btn btn-secondary active" name="dominoView" id="optMultiple">
+                    <input type="radio" autocomplete="off" checked>Connect
+                </label>
+                <label class="btn btn-secondary" name="tagView" id="optTag">
+                    <input type="radio" autocomplete="off">Alone
+                </label>
+            </div>
+
+            <div id="couplingNoRender" class="btn-group btn-group-toggle ml-2" data-toggle="buttons">
+                <label class="btn btn-secondary active" name="dominoView" id="optRender">
+                    <input type="radio" autocomplete="off" checked>Render
+                </label>
+                <label class="btn btn-secondary" name="tagView" id="optTag">
+                    <input type="radio" autocomplete="off">Invisible
+                </label>
+            </div>
+
+            <button type="button" class="btn btn-success ml-2" id="insertCoupling">Insert</button>
+        </div>
+
+    </div>
+</template>

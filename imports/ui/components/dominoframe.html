@@ -1,0 +1,41 @@
+<template name="dominoframe">
+    <div class="fullframe" id="dominoframe">
+        <div class="insert-panel d-flex flex-row p-1">
+            <canvas width="200" height="200" id="insertDomino" class="insert-domino m-1"></canvas>
+            <div class="m-1 d-flex justify-content-between flex-column">
+                <select id="selectedCoupling" class="custom-select">
+                    {{ #each couplingTypes }}
+                    <option value="1">{{ name }}</option>
+                    {{ /each }}
+                </select>
+                <div class="d-flex flex-row">
+                    <div class="mr-1">
+                        <label for="startSec" class="mb-n1">Start</label>
+                        <input id="startSec" type="text" class="form-control" placeholder="0" min="0">
+                    </div>
+                    <div>
+                        <label for="durationSec" class="mb-n1">Duration</label>
+                        <input id="durationSec" type="text" class="form-control" placeholder="0" min="0">
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <button id="resetDominoButton" type="button" class="btn btn-danger mr-1 form-control">Reset</button>
+                    <button id="insertDominoButton" type="button" class="btn btn-success form-control">Insert</button>
+                </div>
+            </div>
+            <div id="dominoAlert" class="alert alert-success domino-alert" role="alert">
+                <span id="dominoAlertText"></span>
+            </div>
+        </div>
+        <div id="dominocontext" class="dropdown-menu" data-domino-id="-1" style="z-index: 999;">
+            <button type="button" id="ctx-delete" class="btn btn-danger domino-delete">Delete</button>
+        </div>
+        <div class="d-flex flex-wrap align-items-start domino-list" id="dominolist">
+            {{ #each reactiveDominos }}
+            <div class="domino domino-unselected" data-domino-id={{id}}>
+                {{ > domino }}
+            </div>
+            {{ /each }}
+        </div>
+    </div>
+</template>

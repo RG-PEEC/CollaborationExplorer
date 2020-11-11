@@ -1,0 +1,7 @@
+<template name="domino">
+    <div style="{{ getProgressStyle }}">
+        {{ refreshCanvas }}
+        <canvas width="{{size}}" height="{{size}}" class="domino-canvas"></canvas>
+        <span class="domino-time-span">{{ timeText }} ({{ durationSec }}s)</span>
+    </div>
+</template>
